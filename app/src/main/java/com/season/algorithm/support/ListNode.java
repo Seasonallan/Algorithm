@@ -1,5 +1,8 @@
-package com.season.algorithm;
+package com.season.algorithm.support;
 
+/**
+ * 链表结构
+ */
 public class ListNode {
     public int val;
     public ListNode next;

@@ -30,16 +30,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     IAlgorithm algorithm = AlgorithmFactory.getInstance().getAlgorithm(bean.name);
                     if (algorithm != null){
-                        algorithm.prepare();
+                        String in = algorithm.prepare();
                         long time = System.currentTimeMillis();
                         algorithm.execute();
                         long cost = System.currentTimeMillis() - time;
-                        algorithm.verify();
+                        String out = algorithm.verify();
                         final AlertDialog.Builder normalDialog =
                                 new AlertDialog.Builder(MainActivity.this);
                         normalDialog.setTitle(algorithm.getName());
-                        normalDialog.setMessage(algorithm.getDesc() +"\n"+
-                                "耗时：" + cost +"ms");
+                        normalDialog.setMessage(algorithm.getDesc()
+                                +"\n"+ "输入：" + in +""
+                                +"\n"+ "输出：" + out +""
+                                +"\n"+ "耗时：" + cost +"ms");
                         normalDialog.setPositiveButton("确定",
                                 new DialogInterface.OnClickListener() {
                                     @Override

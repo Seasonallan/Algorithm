@@ -1,7 +1,7 @@
 package com.season.algorithm.algorithm;
 
 import com.season.algorithm.AlgorithmLinkedList;
-import com.season.algorithm.ListNode;
+import com.season.algorithm.support.ListNode;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -20,9 +20,9 @@ public class Algorithm003 extends AlgorithmLinkedList {
 
     ListNode listNode;
     @Override
-    public void prepare() {
-        listNode = getNode(0, 100);
-        logListNode(listNode);
+    public String prepare() {
+        listNode = getNode(0, 20);
+        return logListNode(listNode);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class Algorithm003 extends AlgorithmLinkedList {
     }
 
     @Override
-    public void verify() {
-        logList(arrayList);
+    public String verify() {
+        return logList(arrayList);
     }
 
     ArrayList<Integer> arrayList = new ArrayList<Integer>();

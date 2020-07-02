@@ -2,6 +2,8 @@ package com.season.algorithm;
 
 import android.util.Log;
 
+import com.season.algorithm.support.ListNode;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -62,14 +64,17 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
     }
 
 
-    public static void log(Object o){
+    public static String log(Object o){
         if (o == null){
             Log.e(TAG, "empty");
+            return "empty";
         }else{
             if (o instanceof ListNode){
                 Log.e(TAG, ((ListNode) o).val +"");
+                return ((ListNode) o).val +"";
             }else{
                 Log.e(TAG, o.toString());
+                return o.toString();
             }
         }
     }
@@ -78,7 +83,7 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
      * 打印链表
      * @param listNode
      */
-    public static void logListNode(ListNode listNode, boolean circle){
+    public static String logListNode(ListNode listNode, boolean circle){
         ListNode first  = listNode;
         StringBuffer stringBuffer = new StringBuffer();
         HashMap<Integer, Integer> cache = new HashMap<>();
@@ -97,6 +102,7 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
             first = first.next;
         }
         Log.e(TAG, stringBuffer.toString());
+        return stringBuffer.toString();
     }
 
 
@@ -104,8 +110,8 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
      * 打印链表
      * @param listNode
      */
-    public static void logListNode(ListNode listNode){
-        logListNode(listNode, true);
+    public static String logListNode(ListNode listNode){
+        return logListNode(listNode, true);
     }
 
 
@@ -113,13 +119,14 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
      * 打印列表
      * @param listNode
      */
-    public static void logList(List listNode){
+    public static String logList(List listNode){
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < listNode.size(); i++) {
             stringBuffer.append(listNode.get(i));
             stringBuffer.append("-");
         }
         Log.e(TAG, stringBuffer.toString());
+        return stringBuffer.toString();
     }
 
 

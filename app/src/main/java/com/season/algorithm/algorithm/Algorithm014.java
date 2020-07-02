@@ -1,7 +1,7 @@
 package com.season.algorithm.algorithm;
 
 import com.season.algorithm.AlgorithmLinkedList;
-import com.season.algorithm.ListNode;
+import com.season.algorithm.support.ListNode;
 
 
 public class Algorithm014 extends AlgorithmLinkedList {
@@ -18,20 +18,20 @@ public class Algorithm014 extends AlgorithmLinkedList {
 
     ListNode listNode;
     @Override
-    public void prepare() {
+    public String prepare() {
         listNode = getNode(0, 20);
-        logListNode(listNode);
+        return logListNode(listNode) + "\n k=3";
     }
 
     ListNode resultNode;
     @Override
     public void execute() {
-        resultNode = findPositionToTail(listNode, 21);
+        resultNode = findPositionToTail(listNode, 3);
     }
 
     @Override
-    public void verify() {
-        log(resultNode);
+    public String verify() {
+        return log(resultNode);
     }
 
 

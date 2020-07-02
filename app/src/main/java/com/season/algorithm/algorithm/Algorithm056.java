@@ -1,7 +1,7 @@
 package com.season.algorithm.algorithm;
 
 import com.season.algorithm.AlgorithmLinkedList;
-import com.season.algorithm.ListNode;
+import com.season.algorithm.support.ListNode;
 
 
 public class Algorithm056 extends AlgorithmLinkedList {
@@ -18,8 +18,8 @@ public class Algorithm056 extends AlgorithmLinkedList {
 
     ListNode listNode;
     @Override
-    public void prepare() {
-        listNode = new ListNode(2);
+    public String prepare() {
+        listNode = new ListNode(1);
         ListNode node = new ListNode(2);
         listNode.next = node;
         ListNode node2 = new ListNode(3);
@@ -33,7 +33,7 @@ public class Algorithm056 extends AlgorithmLinkedList {
         ListNode node6 = new ListNode(5);
         node5.next = node6;
 
-        logListNode(listNode, false);
+        return logListNode(listNode, false);
     }
 
     ListNode resultNode;
@@ -43,8 +43,8 @@ public class Algorithm056 extends AlgorithmLinkedList {
     }
 
     @Override
-    public void verify() {
-        logListNode(resultNode);
+    public String verify() {
+        return logListNode(resultNode);
     }
 
 

@@ -5,7 +5,7 @@ public interface IAlgorithm {
     String getGroup();
     String getName();
     String getDesc();
-    void prepare();
+    String prepare();
     void execute();
-    void verify();
+    String verify();
 }
