@@ -2,6 +2,7 @@ package com.season.algorithm;
 
 import android.util.Log;
 
+import com.season.algorithm.algorithm.Algorithm004;
 import com.season.algorithm.support.TreeNode;
 
 import java.util.List;
@@ -15,18 +16,9 @@ public abstract class AlgorithmTree implements IAlgorithm {
     }
 
 
-    public static TreeNode getNode(int i, int max){
-        return getNode(i, 1, max);
-    }
-
-    public static TreeNode getNode(int i, int skip, int max){
-        if (i > max){
-            return null;
-        }
-        TreeNode node = new TreeNode();
-        node.left = getNode(i + skip, skip, max);
-        node.val = i;
-        return node;
+    public static TreeNode getNode(){
+        return Algorithm004.buildTreeNode(new Integer[]{1,2,4,7,3,5,6,8},
+                new Integer[]{4,7,2,1,5,3,8,6});
     }
 
     public static int getNodeCount(TreeNode listNode){
@@ -38,6 +30,20 @@ public abstract class AlgorithmTree implements IAlgorithm {
             count += getNodeCount(listNode.right);
         }
         return count;
+    }
+
+    /**
+     * 获取树的深度
+     * @param listNode
+     * @return
+     */
+    public static int getTreeDepth(TreeNode listNode){
+        if (listNode == null){
+            return 0;
+        }
+        int leftDepth = getTreeDepth(listNode.left);
+        int rightDepth = getTreeDepth(listNode.right);
+        return Math.max(leftDepth, rightDepth) + 1;
     }
 
 
@@ -60,6 +66,19 @@ public abstract class AlgorithmTree implements IAlgorithm {
      * 打印树
      * @param listNode
      */
+    public static String logTreeNodeRight(TreeNode listNode){
+        if (listNode == null){
+            return "";
+        }
+        String res = listNode.val +"";
+        res += "-";
+        res += logTreeNodeRight(listNode.right);
+        return res;
+    }
+    /**
+     * 打印树
+     * @param listNode
+     */
     public static String logTreeNode(TreeNode listNode){
         String res = logTreeNodeMLR(listNode);
         Log.e(TAG, "前序（根左右）："+ res);
@@ -72,6 +91,9 @@ public abstract class AlgorithmTree implements IAlgorithm {
      * @param listNode
      */
     public static String logTreeNodeMLR(TreeNode listNode){
+        if (listNode == null){
+            return "empty";
+        }
         StringBuffer stringBuffer = new StringBuffer();
 
         stringBuffer.append(listNode.val);
@@ -93,6 +115,9 @@ public abstract class AlgorithmTree implements IAlgorithm {
      * @param listNode
      */
     public static String logTreeNodeLMR(TreeNode listNode){
+        if (listNode == null){
+            return "empty";
+        }
         StringBuffer stringBuffer = new StringBuffer();
 
         if (listNode.left != null){
@@ -114,6 +139,9 @@ public abstract class AlgorithmTree implements IAlgorithm {
      * @param listNode
      */
     public static String logTreeNodeLRM(TreeNode listNode){
+        if (listNode == null){
+            return "empty";
+        }
         StringBuffer stringBuffer = new StringBuffer();
 
         if (listNode.left != null){
@@ -139,7 +167,13 @@ public abstract class AlgorithmTree implements IAlgorithm {
     public static String logList(List listNode){
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < listNode.size(); i++) {
-            stringBuffer.append(listNode.get(i));
+            if (listNode.get(i) instanceof List){
+                stringBuffer.append("(");
+                stringBuffer.append(logList((List) listNode.get(i)));
+                stringBuffer.append(")");
+            }else{
+                stringBuffer.append(listNode.get(i));
+            }
             stringBuffer.append("-");
         }
         Log.e(TAG, stringBuffer.toString());
