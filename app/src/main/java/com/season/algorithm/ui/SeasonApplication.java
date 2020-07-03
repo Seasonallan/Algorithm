@@ -5,6 +5,7 @@ import android.app.Application;
 import com.season.algorithm.AlgorithmFactory;
 import com.season.algorithm.algorithm.Algorithm003;
 import com.season.algorithm.algorithm.Algorithm004;
+import com.season.algorithm.algorithm.Algorithm005;
 import com.season.algorithm.algorithm.Algorithm014;
 import com.season.algorithm.algorithm.Algorithm015;
 import com.season.algorithm.algorithm.Algorithm016;
@@ -58,6 +59,7 @@ public class SeasonApplication extends Application {
         AlgorithmFactory.getInstance().register(new Algorithm061());
         AlgorithmFactory.getInstance().register(new Algorithm062());
 
+        AlgorithmFactory.getInstance().register(new Algorithm005());
 
     }
 }
