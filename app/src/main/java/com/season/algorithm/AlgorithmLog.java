@@ -126,6 +126,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
             stringBuffer.append(item);
             stringBuffer.append("-");
         }
+        Log.e(TAG, stringBuffer.toString());
         return stringBuffer.toString();
     }
 
@@ -201,18 +202,41 @@ public abstract class AlgorithmLog implements IAlgorithm {
     }
 
     /**
+     * 打印数组
+     * @param listNode
+     */
+    public static <T> String logArray(T[][] listNode){
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i = 0; i < listNode.length; i++) {
+            stringBuffer.append("(");
+            for (int j = 0; j < listNode[i].length; j++) {
+                stringBuffer.append(listNode[i][j]);
+                stringBuffer.append("-");
+            }
+            stringBuffer.append(")");
+        }
+        Log.e(TAG, stringBuffer.toString());
+        return stringBuffer.toString();
+    }
+
+    /**
      * 打印列表
      * @param listNode
      */
     public static String logList(List listNode){
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < listNode.size(); i++) {
-            stringBuffer.append(listNode.get(i));
+            if (listNode.get(i) instanceof List){
+                stringBuffer.append("(");
+                stringBuffer.append(logList((List) listNode.get(i)));
+                stringBuffer.append(")");
+            }else{
+                stringBuffer.append(listNode.get(i));
+            }
             stringBuffer.append("-");
         }
         Log.e(TAG, stringBuffer.toString());
         return stringBuffer.toString();
     }
-
 
 }

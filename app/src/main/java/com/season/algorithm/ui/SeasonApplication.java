@@ -33,6 +33,8 @@ import com.season.algorithm.algorithm.Algorithm060;
 import com.season.algorithm.algorithm.Algorithm061;
 import com.season.algorithm.algorithm.Algorithm062;
 import com.season.algorithm.algorithm.Algorithm064;
+import com.season.algorithm.algorithm.Algorithm065;
+import com.season.algorithm.algorithm.Algorithm066;
 
 public class SeasonApplication extends Application {
 
@@ -74,5 +76,9 @@ public class SeasonApplication extends Application {
         AlgorithmFactory.getInstance().register(new Algorithm029());
 
         AlgorithmFactory.getInstance().register(new Algorithm034());
+
+        AlgorithmFactory.getInstance().register(new Algorithm065());
+        AlgorithmFactory.getInstance().register(new Algorithm066());
+
     }
 }
