@@ -29,4 +29,35 @@ public class AlgorithmFactory {
         }
         return null;
     }
+
+
+    /**
+     * 快速排序
+     * @param array
+     * @param start
+     * @param end
+     * @return
+     */
+    public static int partition(Integer[] array, int start, int end) {
+        int key = array[start];
+        while(start < end){
+            while(start < end && key <= array[end]){
+                --end;
+            }
+            swap(array, start, end);
+
+            while(start < end && key >= array[start]){
+                ++start;
+            }
+            swap(array, start, end);
+        }
+        return start;
+    }
+
+    public static void swap(Integer[] array, int start, int end) {
+        int temp = array[start];
+        array[start] = array[end];
+        array[end] = temp;
+    }
+
 }

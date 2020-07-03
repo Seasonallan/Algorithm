@@ -1,14 +1,9 @@
 package com.season.algorithm;
 
-import android.util.Log;
-
 import com.season.algorithm.support.ListNode;
-
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
-public abstract class AlgorithmLinkedList implements IAlgorithm {
+public abstract class AlgorithmLinkedList extends AlgorithmLog {
 
     @Override
     public String getGroup() {
@@ -61,72 +56,6 @@ public abstract class AlgorithmLinkedList implements IAlgorithm {
             count ++;
         }
         return count;
-    }
-
-
-    public static String log(Object o){
-        if (o == null){
-            Log.e(TAG, "empty");
-            return "empty";
-        }else{
-            if (o instanceof ListNode){
-                Log.e(TAG, ((ListNode) o).val +"");
-                return ((ListNode) o).val +"";
-            }else{
-                Log.e(TAG, o.toString());
-                return o.toString();
-            }
-        }
-    }
-
-    /**
-     * 打印链表
-     * @param listNode
-     */
-    public static String logListNode(ListNode listNode, boolean circle){
-        ListNode first  = listNode;
-        StringBuffer stringBuffer = new StringBuffer();
-        HashMap<Integer, Integer> cache = new HashMap<>();
-        while(first!=null){
-            if (circle && cache.containsKey(first.val)){
-                stringBuffer.append("-环形-");
-                stringBuffer.append(first.val);
-                break;
-            }
-            stringBuffer.append(first.val);
-            if (first.random != null){
-                stringBuffer.append("("+ first.random.val+")");
-            }
-            stringBuffer.append("-");
-            cache.put(first.val, 1);
-            first = first.next;
-        }
-        Log.e(TAG, stringBuffer.toString());
-        return stringBuffer.toString();
-    }
-
-
-    /**
-     * 打印链表
-     * @param listNode
-     */
-    public static String logListNode(ListNode listNode){
-        return logListNode(listNode, true);
-    }
-
-
-    /**
-     * 打印列表
-     * @param listNode
-     */
-    public static String logList(List listNode){
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < listNode.size(); i++) {
-            stringBuffer.append(listNode.get(i));
-            stringBuffer.append("-");
-        }
-        Log.e(TAG, stringBuffer.toString());
-        return stringBuffer.toString();
     }
 
 

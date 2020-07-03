@@ -64,11 +64,11 @@ public class Algorithm064 extends AlgorithmStackQueue {
             if(!deque.isEmpty()&&i-deque.peekFirst()>=size){
                 deque.removeFirst();
             }
+            deque.addLast(i);
             //滑动索引大于size开始，每滑动一次就添加一次当前窗口极大值
             if(i>=size-1){
                 list.add(num[deque.peekFirst()]);
             }
-            logList(list);
         }
         return list;
 
