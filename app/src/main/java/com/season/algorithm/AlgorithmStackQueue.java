@@ -2,6 +2,8 @@ package com.season.algorithm;
 
 import android.util.Log;
 
+import com.season.algorithm.support.ListNode;
+
 import java.util.List;
 import java.util.Stack;
 
@@ -21,6 +23,21 @@ public abstract class AlgorithmStackQueue implements IAlgorithm {
             stringBuffer.append("-");
         }
         return stringBuffer.toString();
+    }
+
+    public static String log(Object o){
+        if (o == null){
+            Log.e(TAG, "empty");
+            return "empty";
+        }else{
+            if (o instanceof ListNode){
+                Log.e(TAG, ((ListNode) o).val +"");
+                return ((ListNode) o).val +"";
+            }else{
+                Log.e(TAG, o.toString());
+                return o.toString();
+            }
+        }
     }
 
 
