@@ -68,6 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        recyclerView.scrollToPosition(39);
+        recyclerView.scrollToPosition(46);
     }
 }

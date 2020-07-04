@@ -82,8 +82,8 @@ public class Bean {
         for (String item: items) {
             beanList.add(new Bean(item, "回溯"));
         }
-        items = new String[]{"035-数组中的逆序对(归并排序)","029-最小的K个数(堆排序)"
-                ,"029-最小的K个数(快速排序)" };
+        items = new String[]{"035-数组中的逆序对(归并排序)","029-最小的K个数"
+                ,"029-最小的K个数" };
         for (String item: items) {
             beanList.add(new Bean(item, "排序"));
         }
