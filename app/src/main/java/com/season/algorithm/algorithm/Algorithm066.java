@@ -7,7 +7,7 @@ public class Algorithm066 extends AlgorithmLog {
 
     @Override
     public String getGroup() {
-        return "图";
+        return "图-回溯";
     }
 
     @Override

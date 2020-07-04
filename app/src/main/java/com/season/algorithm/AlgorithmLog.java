@@ -124,7 +124,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
         StringBuffer stringBuffer = new StringBuffer();
         for (T item : stack){
             stringBuffer.append(item);
-            stringBuffer.append("-");
+            stringBuffer.append(",");
         }
         Log.e(TAG, stringBuffer.toString());
         return stringBuffer.toString();
@@ -169,7 +169,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
             if (first.random != null){
                 stringBuffer.append("("+ first.random.val+")");
             }
-            stringBuffer.append("-");
+            stringBuffer.append(",");
             cache.put(first.val, 1);
             first = first.next;
         }
@@ -195,7 +195,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < listNode.length; i++) {
             stringBuffer.append(listNode[i]);
-            stringBuffer.append("-");
+            stringBuffer.append(",");
         }
         Log.e(TAG, stringBuffer.toString());
         return stringBuffer.toString();
@@ -211,7 +211,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
             stringBuffer.append("(");
             for (int j = 0; j < listNode[i].length; j++) {
                 stringBuffer.append(listNode[i][j]);
-                stringBuffer.append("-");
+                stringBuffer.append(",");
             }
             stringBuffer.append(")");
         }
@@ -233,7 +233,7 @@ public abstract class AlgorithmLog implements IAlgorithm {
             }else{
                 stringBuffer.append(listNode.get(i));
             }
-            stringBuffer.append("-");
+            stringBuffer.append(",");
         }
         Log.e(TAG, stringBuffer.toString());
         return stringBuffer.toString();
