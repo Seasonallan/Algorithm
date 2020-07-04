@@ -1,5 +1,6 @@
 package com.season.algorithm;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class AlgorithmFactory {
@@ -30,6 +31,15 @@ public class AlgorithmFactory {
         return null;
     }
 
+    /**
+     * 二分查找
+     * @param array
+     * @param key
+     * @return
+     */
+    public static int binarySearch(int[] array, int key){
+        return Arrays.binarySearch(array, key);
+    }
 
     /**
      * 快速排序

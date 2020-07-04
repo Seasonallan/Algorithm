@@ -3,9 +3,11 @@ package com.season.algorithm.ui;
 import android.app.Application;
 
 import com.season.algorithm.AlgorithmFactory;
+import com.season.algorithm.algorithm.Algorithm001;
 import com.season.algorithm.algorithm.Algorithm003;
 import com.season.algorithm.algorithm.Algorithm004;
 import com.season.algorithm.algorithm.Algorithm005;
+import com.season.algorithm.algorithm.Algorithm006;
 import com.season.algorithm.algorithm.Algorithm007;
 import com.season.algorithm.algorithm.Algorithm008;
 import com.season.algorithm.algorithm.Algorithm009;
@@ -25,6 +27,7 @@ import com.season.algorithm.algorithm.Algorithm026;
 import com.season.algorithm.algorithm.Algorithm029;
 import com.season.algorithm.algorithm.Algorithm034;
 import com.season.algorithm.algorithm.Algorithm036;
+import com.season.algorithm.algorithm.Algorithm037;
 import com.season.algorithm.algorithm.Algorithm038;
 import com.season.algorithm.algorithm.Algorithm039;
 import com.season.algorithm.algorithm.Algorithm044;
@@ -88,6 +91,10 @@ public class SeasonApplication extends Application {
         AlgorithmFactory.getInstance().register(new Algorithm008());
         AlgorithmFactory.getInstance().register(new Algorithm009());
         AlgorithmFactory.getInstance().register(new Algorithm010());
+
+        AlgorithmFactory.getInstance().register(new Algorithm001());
+        AlgorithmFactory.getInstance().register(new Algorithm006());
+        AlgorithmFactory.getInstance().register(new Algorithm037());
 
     }
 }
