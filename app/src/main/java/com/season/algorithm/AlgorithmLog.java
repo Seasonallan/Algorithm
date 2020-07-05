@@ -192,6 +192,9 @@ public abstract class AlgorithmLog implements IAlgorithm {
      * @param listNode
      */
     public static <T> String logArray(T[] listNode){
+        if (listNode == null){
+            return "empty";
+        }
         StringBuffer stringBuffer = new StringBuffer();
         for (int i = 0; i < listNode.length; i++) {
             stringBuffer.append(listNode[i]);
