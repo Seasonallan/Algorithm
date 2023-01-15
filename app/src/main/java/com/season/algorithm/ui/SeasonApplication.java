@@ -1,6 +1,7 @@
 package com.season.algorithm.ui;
 
 import android.app.Application;
+import android.os.Handler;
 
 import com.season.algorithm.AlgorithmFactory;
 import com.season.algorithm.algorithm.Algorithm001;
@@ -60,12 +61,23 @@ import com.season.algorithm.algorithm.Algorithm062;
 import com.season.algorithm.algorithm.Algorithm064;
 import com.season.algorithm.algorithm.Algorithm065;
 import com.season.algorithm.algorithm.Algorithm066;
+import com.season.lib.util.LogUtil;
+
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class SeasonApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+
+
+       // checkApi();
 
         AlgorithmFactory.getInstance().register(new Algorithm003());
         AlgorithmFactory.getInstance().register(new Algorithm014());
@@ -136,5 +148,50 @@ public class SeasonApplication extends Application {
         AlgorithmFactory.getInstance().register(new Algorithm043());
         AlgorithmFactory.getInstance().register(new Algorithm046());
         AlgorithmFactory.getInstance().register(new Algorithm051());
+    }
+
+
+
+    private void checkApi() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+//@GET("/recommendations/city")
+                    URL url;
+                    HttpURLConnection connection;
+                    url = new URL("https://api.vipflonline.com/recommendations/system");
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.connect();
+
+                    StringBuilder stringBuilder = new StringBuilder();
+                    int responseCode = connection.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        //得到服务器响应的输入流
+                        InputStream inputStream = connection.getInputStream();
+                        //获取请求的内容总长度
+                        int contentLength = connection.getContentLength();
+                        BufferedInputStream bfi = new BufferedInputStream(inputStream);
+                        //此处的len表示每次循环读取的内容长度
+                        int len;
+                        //已经读取的总长度
+                        int totle = 0;
+                        //bytes是用于存储每次读取出来的内容
+                        byte[] bytes = new byte[1024];
+                        while ((len = bfi.read(bytes)) != -1) {
+                            //每次读取完了都将len累加在totle里
+                            totle += len;
+                            stringBuilder.append(bytes);
+                        }
+                        LogUtil.e(stringBuilder.toString());
+                        inputStream.close();
+                        bfi.close();
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
